@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="w3-container mt-5">
+    <h1>{{ exam?.ExamName }} Exam</h1>
+  </div>
+  <hr>
+
+  <div class="container d-flex justify-content-between">
+    <p>Exam progress</p>
+    <p>Question {{currentQuestionIndex+1}} of {{Questions.length}}</p>
+
+  </div>
+  <div class="progress">
+    <div  class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" role="progressbar" [style.width.%]="onProgress()"></div>
+  </div>
+
+  <div class="container" style="min-height: 30rem;">
+    <p>Question {{currentQuestionIndex+1}}</p>
+
+    <h1>{{currentQuestion.questionHeader}}</h1>
+  
+    <div class="form-check" *ngFor="let choice of Choices; let i = index">
+      <label class="radiocontainer" [class.checkedlabel]="selectedAnswer[currentQuestionIndex] === (i+1)" for="choice{{[i+1]}}">
+        <input class="form-check-input" type="radio" name="choice" [(ngModel)]="selectedAnswer[currentQuestionIndex]" [value]="i+1" id="choice{{[i+1]}}">
+        {{ choice }}
+      </label>
+    </div>
+  
+    <div class="row justify-content-between">
+      <div class="col-md-6 text-md-left">
+        <button class="btn btn-success m-3" [disabled]="currentQuestionIndex === 0" (click)="getPreviousQuestion()">
+          <i class="fa fa-arrow-left mr-2"></i> Previous Question
+        </button>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <button class="btn btn-success m-3" [disabled]="currentQuestionIndex === Questions.length - 1 && isSubmittedVisible==true" (click)="getNextQuestion()">
+          Next Question <i class="fa fa-arrow-right ml-2"></i>
+        </button> 
+      <div  *ngIf="isSubmittedVisible">
+        <!-- <button class="btn btn-success m-3" style="float:right;" (click)="onSubmit()"[routerLink]="['/score',examId,totalScore,attampedQuesstions,UnattampedQuesstions,wrongAnswers,rightAnswers,totalexamscore,totalQquestionNumber]">Submit</button>      </div> -->
+        <button class="btn btn-success m-3" style="float:right;" (click)="onSubmit()">Submit</button>      </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

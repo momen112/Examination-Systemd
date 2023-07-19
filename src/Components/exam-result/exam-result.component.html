@@ -1,0 +1,59 @@
+<div class=" text-center m-5">
+    <h1> {{exam.ExamName}} Exam Result</h1>
+
+    <div class="container d-flex justify-content-between">
+        <h4>Corrected Answers = {{rightAnswers}} /{{totalQquestionNumber}}</h4>
+        <h4>Your Score = {{scorePresentage}} %</h4>
+    
+      </div>
+  <hr>
+    <table class="table table-hover">
+      
+            
+        <tbody>
+            <tr  class="table-warning">
+                <td scope="col">Your Score</td>
+                <td scope="row">{{totalscore}}</td>
+              </tr>
+              <tr class="table-primary">
+                <td scope="col">Total Questions</td>
+                <td>{{totalQquestionNumber}}</td>
+              </tr>
+            <tr class="table-secondary">
+                <td scope="col">Corrected Answers</td>
+                <td>{{rightAnswers}}</td>
+            
+            </tr>
+            <tr class="table-success">
+                <td scope="col">Incorrected Answers</td>          
+                <td>{{wrongAnswers}}</td>
+            </tr>
+
+            <tr class="table-danger">
+                <td scope="col">Attemped Questions</td>
+                <td>{{atmpedQAs}}</td>
+            </tr>
+         
+            <tr class="table-info">
+            <td scope="col">Unattemped Answers</td>
+            <td>{{unAatmpedQAs}}</td>
+            </tr>
+         
+        </tbody>
+      </table>
+
+      <div class="row justify-content-between">
+        <div class="col-md-6 text-md-left">
+          <button class="btn btn-success m-3" [routerLink]="['/examQA',examId]">
+            Try Again
+          </button>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <button class="btn btn-success m-3"  [routerLink]="['/Exams']">
+            Back To Exams
+          </button> 
+     
+
+
+
+</div>
